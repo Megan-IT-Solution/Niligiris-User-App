@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:nilgiris/constants/app_assets.dart';
 import 'package:nilgiris/controllers/switch_controller.dart';
 import 'package:nilgiris/controllers/visibility_controller.dart';
+import 'package:nilgiris/screens/auth/forgot_password_screen.dart';
 import 'package:nilgiris/screens/auth/widgets/auth_footer.dart';
 import 'package:nilgiris/screens/auth/widgets/remember_me_and_forgot_pass_portion.dart';
 import 'package:nilgiris/screens/onboarding/onboarding_screen.dart';
@@ -18,7 +19,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primaryWhite.withValues(alpha: 0.9),
+      backgroundColor: Color(0xFFF4F5F9),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,8 +74,11 @@ class LoginScreen extends StatelessWidget {
                     Consumer<SwitchController>(
                       builder: (context, switchController, child) {
                         return RememberMeAndForgotPassPortion(
+                          onForgotPasswordPressed: () {
+                            Get.to(ForgotPasswordScreen());
+                          },
                           switchValue: switchController.isSwitchActive,
-                          onPressed: (v) {
+                          onSwitchPressed: (v) {
                             switchController.makeSwitchActiveOrInActive(v);
                           },
                         );

@@ -14,4 +14,8 @@ class AppTextStyles {
     fontSize: 15,
     fontWeight: FontWeight.w500,
   );
+  static TextStyle h2 = GoogleFonts.poppins(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+  );
 }

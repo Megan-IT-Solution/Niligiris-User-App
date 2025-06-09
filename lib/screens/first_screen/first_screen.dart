@@ -12,7 +12,7 @@ class FirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primaryWhite.withValues(alpha: 0.9),
+      backgroundColor: Color(0xFFF4F5F9),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

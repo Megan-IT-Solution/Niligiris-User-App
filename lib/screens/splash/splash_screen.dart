@@ -23,6 +23,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: LogoWidget(height: 200, width: 300)));
+    return Scaffold(body: Center(child: LogoWidget(height: 300, width: 400)));
   }
 }

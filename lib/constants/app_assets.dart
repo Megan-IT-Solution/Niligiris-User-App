@@ -1,0 +1,8 @@
+class AppAssets {
+  static String appLogo = "assets/images/logo.png";
+  static String appleIcon = "assets/icons/apple.png";
+  static String grocery = "assets/images/grocery.png";
+  static String rider = "assets/images/rider.png";
+  static String onboardingLast = "assets/images/last.png";
+  static String female = "assets/images/female.png";
+}

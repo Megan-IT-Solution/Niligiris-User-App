@@ -25,3 +25,21 @@ final List<Map<String, String>> pages = [
     'image': "assets/images/last.png",
   },
 ];
+
+List<String> categoriesList = [
+  "Atta & Flours",
+  "Cold Pressed/Wood Oil & Gee",
+  "Fresh Vegetables & Greens",
+  "Snacks Corners",
+  "Spices Whole",
+  "Indian Dals/Pulses/Lentils",
+  "Masala",
+  "UnPolished Millets & Ancients Rice Variety",
+  "Pooja Items",
+  "Variety of Rices",
+  "Ready Mix & Pickles",
+  "Sugar, Salts, Nuts & Dry Fruits",
+  "Sun Dried (Vatal/Apalam)",
+  "Tea & Coffee Powder",
+  "Vermicelli & Noodles",
+];

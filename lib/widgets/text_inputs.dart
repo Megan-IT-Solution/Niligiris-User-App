@@ -7,17 +7,20 @@ class CustomTextInput extends StatelessWidget {
   final IconData prefixIcon;
   final Widget? suffixWidget;
   final bool? isTextSecured;
+  final TextInputType? textInputType;
   const CustomTextInput({
     super.key,
     required this.hintText,
     required this.prefixIcon,
     this.suffixWidget,
     this.isTextSecured,
+    this.textInputType,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      keyboardType: textInputType ?? TextInputType.text,
       obscureText: isTextSecured ?? false,
       decoration: InputDecoration(
         border: InputBorder.none,

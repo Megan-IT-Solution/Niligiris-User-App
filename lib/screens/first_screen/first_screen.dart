@@ -4,6 +4,7 @@ import 'package:nilgiris/constants/app_assets.dart';
 import 'package:nilgiris/constants/app_colors.dart';
 import 'package:nilgiris/constants/app_text_styles.dart';
 import 'package:nilgiris/screens/auth/login_screen.dart';
+import 'package:nilgiris/screens/auth/sign_up_screen.dart';
 import 'package:nilgiris/screens/onboarding/onboarding_screen.dart';
 
 class FirstScreen extends StatelessWidget {
@@ -17,9 +18,9 @@ class FirstScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: Get.height * 0.55,
+            height: Get.height * 0.6,
             width: Get.width,
-            child: Image.asset(AppAssets.female, fit: BoxFit.cover),
+            child: Image.asset(AppAssets.female3, fit: BoxFit.cover),
           ),
           SizedBox(height: 15),
           SizedBox(
@@ -40,6 +41,9 @@ class FirstScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 30),
                   PrimaryButton(
+                    onPressed: () {
+                      Get.offAll(SignUpScreen());
+                    },
                     title: "Create your account",
                     btnColor: AppColors.primaryWhite,
                     titleColor: AppColors.primaryBlack,

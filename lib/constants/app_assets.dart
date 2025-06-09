@@ -5,4 +5,6 @@ class AppAssets {
   static String rider = "assets/images/rider.png";
   static String onboardingLast = "assets/images/last.png";
   static String female = "assets/images/female.png";
+  static String female2 = "assets/images/girl2.png";
+  static String female3 = "assets/images/girl1.png";
 }

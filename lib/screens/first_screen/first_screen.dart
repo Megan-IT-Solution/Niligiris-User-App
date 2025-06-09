@@ -28,13 +28,15 @@ class FirstScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Welcome",
-                    style: AppTextStyles.onboardingMain.copyWith(fontSize: 24),
-                  ),
+                  Text("Welcome", style: AppTextStyles.authHeading),
                   SizedBox(height: 5),
                   Text(
                     "Create your account if you are new user or login to your existing account",
+                    style: AppTextStyles.authHeading.copyWith(
+                      fontSize: 15,
+                      fontWeight: FontWeight.normal,
+                      color: AppColors.lightGrey,
+                    ),
                   ),
                   SizedBox(height: 30),
                   PrimaryButton(
@@ -44,7 +46,7 @@ class FirstScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   PrimaryButton(
-                    onPressed: (){
+                    onPressed: () {
                       Get.offAll(LoginScreen());
                     },
                     title: "Login to Existing Account",

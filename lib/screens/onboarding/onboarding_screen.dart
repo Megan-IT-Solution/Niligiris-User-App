@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nilgiris/constants/app_colors.dart';
 import 'package:nilgiris/constants/app_text_styles.dart';
 import 'package:nilgiris/screens/first_screen/first_screen.dart';
@@ -129,10 +130,10 @@ class PrimaryButton extends StatelessWidget {
         child: Center(
           child: Text(
             title,
-            style: TextStyle(
-              fontSize: 16,
+            style: GoogleFonts.poppins(
+              fontSize: 15,
               color: titleColor ?? AppColors.primaryWhite,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),

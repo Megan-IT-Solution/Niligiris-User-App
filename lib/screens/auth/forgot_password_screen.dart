@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nilgiris/constants/app_text_styles.dart';
 import 'package:nilgiris/screens/onboarding/onboarding_screen.dart';
+import 'package:nilgiris/utils/dialogs.dart';
 import 'package:nilgiris/widgets/text_inputs.dart';
 
 import '../../constants/app_colors.dart';
@@ -44,7 +45,12 @@ class ForgotPasswordScreen extends StatelessWidget {
               prefixIcon: Icons.email_outlined,
             ),
             SizedBox(height: 40),
-            PrimaryButton(title: "Reset"),
+            PrimaryButton(
+              title: "Reset",
+              onPressed: () {
+                AppDialogs.showEmailConfirmationDialog(context);
+              },
+            ),
           ],
         ),
       ),

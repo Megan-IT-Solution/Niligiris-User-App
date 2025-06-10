@@ -1,3 +1,8 @@
+import 'package:flutter/cupertino.dart';
+import 'package:nilgiris/screens/custom_navbar/home/home_screen.dart';
+import 'package:nilgiris/screens/custom_navbar/profile/profile_screen.dart';
+import 'package:nilgiris/screens/custom_navbar/wishlist/wishlist_screen.dart';
+
 final List<Map<String, String>> pages = [
   {
     'title': 'Get Discounts\nOn All Products',
@@ -43,3 +48,4 @@ List<String> categoriesList = [
   "Tea & Coffee Powder",
   "Vermicelli & Noodles",
 ];
+List<Widget> screens = [HomeScreen(), WishlistScreen(), ProfileScreen()];

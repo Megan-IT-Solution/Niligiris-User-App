@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nilgiris/constants/app_assets.dart';
+import 'package:nilgiris/screens/custom_navbar/cart/cart_screen.dart';
 import 'package:nilgiris/screens/custom_navbar/widgets/cart_tab_widget.dart';
 import 'package:nilgiris/screens/custom_navbar/widgets/custom_tab_widget.dart';
+import 'package:nilgiris/utils/lists.dart';
 
 import '../../constants/app_colors.dart';
 
@@ -67,11 +70,16 @@ class _CustomNavbarScreenState extends State<CustomNavbarScreen> {
                         ? AppColors.primaryBlack
                         : AppColors.lightGrey,
               ),
-              CartTabWidget(onPressed: () {}),
+              CartTabWidget(
+                onPressed: () {
+                  Get.to(CartScreen());
+                },
+              ),
             ],
           ),
         ),
       ),
+      body: screens[_currentIndex],
     );
   }
 }

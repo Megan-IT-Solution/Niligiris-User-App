@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nilgiris/controllers/switch_controller.dart';
 import 'package:nilgiris/controllers/visibility_controller.dart';
-import 'package:nilgiris/screens/splash/splash_screen.dart';
+import 'package:nilgiris/screens/custom_navbar/custom_navbar_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
-        home: SplashScreen(),
+        // home: SplashScreen(),
+        home: CustomNavbarScreen(),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants/app_colors.dart';
+import '../constants/app_text_styles.dart';
 
 class CustomTextInput extends StatelessWidget {
   final String hintText;
@@ -38,6 +39,32 @@ class CustomTextInput extends StatelessWidget {
         prefixIcon: Icon(prefixIcon, color: AppColors.lightGrey),
         suffixIcon: suffixWidget ?? SizedBox(),
         hintStyle: TextStyle(color: AppColors.lightGrey, fontSize: 15),
+      ),
+    );
+  }
+}
+
+class SearchTextInput extends StatelessWidget {
+  const SearchTextInput({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: AppColors.lightGrey.withValues(alpha: 0.2),
+        border: InputBorder.none,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide.none,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide.none,
+        ),
+        prefixIcon: Icon(Icons.search, color: AppColors.lightGrey),
+        hintText: "Search Keyword...",
+        hintStyle: AppTextStyles.h1.copyWith(color: AppColors.lightGrey),
       ),
     );
   }

@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 import '../../constants/app_colors.dart';
 import '../../constants/app_text_styles.dart';
 import '../../widgets/text_inputs.dart';
+import '../custom_navbar/custom_navbar_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -87,7 +88,12 @@ class LoginScreen extends StatelessWidget {
                     ),
 
                     SizedBox(height: 20),
-                    PrimaryButton(title: "Log In"),
+                    PrimaryButton(
+                      onPressed: () {
+                        Get.offAll(CustomNavbarScreen());
+                      },
+                      title: "Log In",
+                    ),
                     SizedBox(height: 30),
                     AuthFooter(
                       onPressed: () {

@@ -121,23 +121,31 @@ List<ProductModel> productList = [
     productId: "1",
     productTitle: "Fresh Peach",
     productImage: "assets/images/peach.png",
+    description:
+        "Juicy, sweet, and velvety-smooth, a ripe peach is like summer captured in fruit. Its blushing pink skin gives way to tender, honeyed flesh with a delicate floral aroma. Each bite is a burst of sunshine, balancing sweetness with a subtle tang. Whether fresh, grilled, or baked, peaches bring a luscious, fragrant touch to every dish.",
     price: 8.5,
   ),
   ProductModel(
     productId: "2",
     productTitle: "Avocado",
+    description:
+        "Creamy, rich, and luxuriously smooth, avocado is nature’s butter. Its mild, nutty flavor pairs perfectly with everything from toast to salads, while its velvety texture makes it irresistibly versatile. Packed with healthy fats, it’s as nourishing as it is delicious. From guacamole to smoothies, avocado adds a touch of indulgence to any meal.",
     productImage: "assets/images/avacodo.png",
     price: 11.5,
   ),
   ProductModel(
     productId: "3",
     productTitle: "Pineapple",
+    description:
+        "Bold, tangy, and explosively sweet, pineapple is tropical sunshine in fruit form. Its juicy golden flesh offers a vibrant mix of acidity and honey-like sweetness, making it refreshingly addictive. Whether eaten fresh, grilled, or blended, its bright flavor instantly elevates any dish. With its spiky crown and zesty kick, pineapple is as fun as it is flavorful.",
     productImage: "assets/images/pineapple.png",
     price: 4.5,
   ),
   ProductModel(
     productId: "4",
     productTitle: "Black Grapes",
+    description:
+        "Crisp, juicy, and bursting with sweetness, grapes are nature’s perfect snack. Their thin skins give way to a refreshing, nectar-like interior, whether enjoyed fresh or frozen. From deep purple to emerald green, each variety offers a unique balance of tart and sugary notes. Easy to eat and endlessly versatile, grapes are a timeless treat for any occasion.",
     productImage: "assets/images/graph.png",
     price: 9.0,
   ),

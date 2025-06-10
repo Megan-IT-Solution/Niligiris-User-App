@@ -1,5 +1,7 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:nilgiris/constants/app_text_styles.dart';
+import 'package:nilgiris/screens/custom_navbar/home/widgets/banner_widget.dart';
+import 'package:nilgiris/utils/lists.dart';
 import 'package:nilgiris/widgets/text_inputs.dart';
 
 import '../../../constants/app_colors.dart';
@@ -12,15 +14,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _currentIndex = 0;
-
-  final List<String> imageUrls = [
-    'assets/images/ad.png',
-    'assets/images/ad.png',
-    'assets/images/ad.png',
-    'assets/images/ad.png',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,57 +26,55 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               SearchTextInput(),
               const SizedBox(height: 20),
-              Stack(
-                children: [
-                  CarouselSlider(
-                    options: CarouselOptions(
-                      height: 250,
-                      autoPlay: true,
-                      enlargeCenterPage: true,
-                      viewportFraction: 0.97,
-                      aspectRatio: 16 / 9,
-                      autoPlayInterval: const Duration(seconds: 3),
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          _currentIndex = index;
-                        });
-                      },
-                    ),
-                    items:
-                        imageUrls.map((url) {
-                          return Image.asset(
-                            url,
-                            fit: BoxFit.cover,
-                            width: double.infinity,
-                          );
-                        }).toList(),
-                  ),
-                  Positioned(
-                    bottom: 10,
-                    left: 20,
-                    child: Row(
-                      children:
-                          imageUrls.asMap().entries.map((entry) {
-                            bool isActive = _currentIndex == entry.key;
-                            return AnimatedContainer(
-                              duration: const Duration(milliseconds: 300),
-                              width: isActive ? 30.0 : 10.0,
-                              height: 10.0,
-                              margin: const EdgeInsets.symmetric(
-                                horizontal: 4.0,
-                              ),
-                              decoration: BoxDecoration(
-                                color:
-                                    isActive
-                                        ? AppColors.primaryColor
-                                        : AppColors.primaryWhite,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                            );
-                          }).toList(),
-                    ),
-                  ),
-                ],
+              BannerWidget(),
+              SizedBox(height: 20),
+              Text(
+                "Categories",
+                style: AppTextStyles.h2.copyWith(fontWeight: FontWeight.w600),
+              ),
+              SizedBox(height: 10),
+              SizedBox(
+                height: 110,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categories.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            height: 65,
+                            width: 90,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color:
+                                  categoryColors[index % categoryColors.length],
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.all(15),
+                              child: Image.asset(categories[index].icon),
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          SizedBox(
+                            width: 90,
+                            height: 33,
+                            child: Text(
+                              categories[index].title,
+                              textAlign: TextAlign.center,
+                              style: AppTextStyles.h1.copyWith(fontSize: 12),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              softWrap: true,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
             ],
           ),

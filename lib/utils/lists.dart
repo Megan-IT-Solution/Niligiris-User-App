@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:nilgiris/models/category_model.dart';
+import 'package:nilgiris/models/product_model.dart';
 import 'package:nilgiris/screens/custom_navbar/home/home_screen.dart';
 import 'package:nilgiris/screens/custom_navbar/profile/profile_screen.dart';
 import 'package:nilgiris/screens/custom_navbar/wishlist/wishlist_screen.dart';
@@ -107,4 +108,37 @@ List<Color> categoryColors = [
   Color(0xFFE6F2EA),
   Color(0xFFFFE9E5),
   Color(0xFFFFF6E3),
+];
+
+List<Color> productCategoriesColor = [
+  Color(0xFFFFCEC1),
+  Color(0xFFFCFFD9),
+  Color(0xFFFFE6C2),
+  Color(0xFFFEE1ED),
+];
+List<ProductModel> productList = [
+  ProductModel(
+    productId: "1",
+    productTitle: "Fresh Peach",
+    productImage: "assets/images/peach.png",
+    price: 8.5,
+  ),
+  ProductModel(
+    productId: "2",
+    productTitle: "Avocado",
+    productImage: "assets/images/avacodo.png",
+    price: 11.5,
+  ),
+  ProductModel(
+    productId: "3",
+    productTitle: "Pineapple",
+    productImage: "assets/images/pineapple.png",
+    price: 4.5,
+  ),
+  ProductModel(
+    productId: "4",
+    productTitle: "Black Grapes",
+    productImage: "assets/images/graph.png",
+    price: 9.0,
+  ),
 ];

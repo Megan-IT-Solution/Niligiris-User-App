@@ -4,6 +4,7 @@ import 'package:nilgiris/constants/app_text_styles.dart';
 import 'package:nilgiris/screens/custom_navbar/home/all_categories_screen.dart';
 import 'package:nilgiris/screens/custom_navbar/home/widgets/banner_widget.dart';
 import 'package:nilgiris/screens/custom_navbar/home/widgets/categories_widget.dart';
+import 'package:nilgiris/screens/custom_navbar/home/widgets/featured_products_widget.dart';
 import 'package:nilgiris/widgets/text_inputs.dart';
 
 import '../../../constants/app_colors.dart';
@@ -23,8 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
               SearchTextInput(),
               const SizedBox(height: 20),
@@ -52,6 +52,14 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: 15),
               CategoriesWidget(),
+              SizedBox(height: 20),
+              Text(
+                "Featured Products",
+                style: AppTextStyles.h2.copyWith(fontWeight: FontWeight.w600),
+              ),
+              SizedBox(height: 20),
+
+              FeaturedProductsWidget(),
             ],
           ),
         ),

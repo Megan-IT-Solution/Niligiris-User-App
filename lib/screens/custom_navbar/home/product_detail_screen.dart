@@ -3,13 +3,22 @@ import 'package:get/get.dart';
 import 'package:nilgiris/constants/app_text_styles.dart';
 import 'package:nilgiris/models/product_model.dart';
 import 'package:nilgiris/screens/custom_navbar/home/widgets/pdt_detail_image_portion.dart';
+import 'package:nilgiris/screens/custom_navbar/home/widgets/pdt_detail_quantity_increment_decrement_widget.dart';
+import 'package:nilgiris/screens/custom_navbar/home/widgets/pdt_detail_reviews_widget.dart';
+import 'package:nilgiris/screens/onboarding/onboarding_screen.dart';
 
 import '../../../constants/app_colors.dart';
 
-class ProductDetailScreen extends StatelessWidget {
+class ProductDetailScreen extends StatefulWidget {
   final ProductModel productModel;
   const ProductDetailScreen({super.key, required this.productModel});
 
+  @override
+  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
+}
+
+class _ProductDetailScreenState extends State<ProductDetailScreen> {
+  int _count = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +35,7 @@ class ProductDetailScreen extends StatelessWidget {
                 child: Icon(Icons.arrow_back),
               ),
             ),
-            PdtDetailImagePortion(productModel: productModel),
+            PdtDetailImagePortion(productModel: widget.productModel),
             SizedBox(height: 20),
             Expanded(
               child: Container(
@@ -49,7 +58,7 @@ class ProductDetailScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "${productModel.price} AED/KG",
+                            "${widget.productModel.price} AED/KG",
                             style: AppTextStyles.h1.copyWith(
                               color: Color(0xFF28B446),
                               fontWeight: FontWeight.bold,
@@ -63,12 +72,44 @@ class ProductDetailScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 5),
                       Text(
-                        productModel.productTitle,
+                        widget.productModel.productTitle,
                         style: AppTextStyles.h2.copyWith(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      SizedBox(height: 10),
+                      PdtDetailReviewsWidget(),
+                      SizedBox(height: 10),
+                      Text(
+                        widget.productModel.description,
+                        style: AppTextStyles.h2.copyWith(
+                          fontSize: 13,
+                          color: Color(0xFF868889),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      PdtDetailQuantityIncrementDecrementWidget(
+                        quantity: _count,
+                        onMinusClicked: () {
+                          if (_count <= 1) {
+                            setState(() {
+                              _count = 1;
+                            });
+                          } else {
+                            setState(() {
+                              _count--;
+                            });
+                          }
+                        },
+                        onAddClicked: () {
+                          setState(() {
+                            _count++;
+                          });
+                        },
+                      ),
+                      SizedBox(height: 20),
+                      PrimaryButton(onPressed: () {}, title: "Add To Cart"),
                     ],
                   ),
                 ),

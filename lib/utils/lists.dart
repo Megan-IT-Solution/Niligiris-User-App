@@ -135,7 +135,7 @@ List<ProductModel> productList = [
   ),
   ProductModel(
     productId: "3",
-    productTitle: "Pineapple",
+    productTitle: "Pomegranate",
     description:
         "Bold, tangy, and explosively sweet, pineapple is tropical sunshine in fruit form. Its juicy golden flesh offers a vibrant mix of acidity and honey-like sweetness, making it refreshingly addictive. Whether eaten fresh, grilled, or blended, its bright flavor instantly elevates any dish. With its spiky crown and zesty kick, pineapple is as fun as it is flavorful.",
     productImage: "assets/images/pineapple.png",

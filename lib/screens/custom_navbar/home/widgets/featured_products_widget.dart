@@ -35,7 +35,7 @@ class _FeaturedProductsWidgetState extends State<FeaturedProductsWidget> {
         final bool isInCart = cartQuantities.containsKey(index);
         final int quantity = cartQuantities[index] ?? 0;
         return GestureDetector(
-          onTap: (){
+          onTap: () {
             Get.to(ProductDetailScreen(productModel: product));
           },
           child: Container(
@@ -121,7 +121,10 @@ class _FeaturedProductsWidgetState extends State<FeaturedProductsWidget> {
                                 ),
                               ),
 
-                              Text(quantity.toString(), style: AppTextStyles.h1),
+                              Text(
+                                quantity.toString(),
+                                style: AppTextStyles.h1,
+                              ),
                               GestureDetector(
                                 onTap: () {
                                   setState(() {
@@ -157,7 +160,9 @@ class _FeaturedProductsWidgetState extends State<FeaturedProductsWidget> {
                                 const SizedBox(width: 8),
                                 Text(
                                   "Add to Cart",
-                                  style: AppTextStyles.h1.copyWith(fontSize: 14),
+                                  style: AppTextStyles.h1.copyWith(
+                                    fontSize: 14,
+                                  ),
                                 ),
                               ],
                             ),

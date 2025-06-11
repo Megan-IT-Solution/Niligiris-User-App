@@ -18,8 +18,8 @@ class CustomTabWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(top: 20),
         child: SizedBox(
-          height: 30,
-          width: 30,
+          height: 25,
+          width: 25,
           child: Image.asset(image, color: activeColor),
         ),
       ),

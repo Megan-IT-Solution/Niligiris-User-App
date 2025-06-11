@@ -22,7 +22,7 @@ class _CustomNavbarScreenState extends State<CustomNavbarScreen> {
     return Scaffold(
       backgroundColor: AppColors.bgColor,
       bottomNavigationBar: Container(
-        height: 80,
+        height: 70,
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/bottom.png'),

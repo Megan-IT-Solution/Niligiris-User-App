@@ -22,46 +22,42 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: AppColors.bgColor,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-          child: ListView(
-            children: [
-              SearchTextInput(),
-              const SizedBox(height: 20),
-              BannerWidget(),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Categories",
-                    style: AppTextStyles.h2.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
+        child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          children: [
+            SearchTextInput(),
+            const SizedBox(height: 20),
+            BannerWidget(),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Categories",
+                  style: AppTextStyles.h2.copyWith(fontWeight: FontWeight.w600),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(AllCategoriesScreen());
+                  },
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                    color: AppColors.lightGrey,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Get.to(AllCategoriesScreen());
-                    },
-                    child: Icon(
-                      Icons.arrow_forward_ios,
-                      color: AppColors.lightGrey,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 15),
-              CategoriesWidget(),
-              SizedBox(height: 20),
-              Text(
-                "Featured Products",
-                style: AppTextStyles.h2.copyWith(fontWeight: FontWeight.w600),
-              ),
-              SizedBox(height: 20),
+                ),
+              ],
+            ),
+            SizedBox(height: 15),
+            CategoriesWidget(),
+            SizedBox(height: 20),
+            Text(
+              "Featured Products",
+              style: AppTextStyles.h2.copyWith(fontWeight: FontWeight.w600),
+            ),
+            SizedBox(height: 20),
 
-              FeaturedProductsWidget(),
-            ],
-          ),
+            FeaturedProductsWidget(),
+          ],
         ),
       ),
     );

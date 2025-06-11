@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nilgiris/controllers/cart_controller.dart';
 import 'package:nilgiris/screens/custom_navbar/home/product_detail_screen.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../constants/app_assets.dart';
 import '../../../../constants/app_colors.dart';
@@ -18,6 +20,7 @@ class _FeaturedProductsWidgetState extends State<FeaturedProductsWidget> {
   Map<int, int> cartQuantities = {};
 
   bool _isLiked = false;
+
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -33,7 +36,7 @@ class _FeaturedProductsWidgetState extends State<FeaturedProductsWidget> {
       itemBuilder: (_, index) {
         final product = productList[index];
         final bool isInCart = cartQuantities.containsKey(index);
-        final int quantity = cartQuantities[index] ?? 0;
+
         return GestureDetector(
           onTap: () {
             Get.to(ProductDetailScreen(productModel: product));
@@ -52,8 +55,8 @@ class _FeaturedProductsWidgetState extends State<FeaturedProductsWidget> {
                       alignment: Alignment.topRight,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 08,
-                          vertical: 02,
+                          horizontal: 8,
+                          vertical: 2,
                         ),
                         child: GestureDetector(
                           onTap: () {
@@ -70,13 +73,12 @@ class _FeaturedProductsWidgetState extends State<FeaturedProductsWidget> {
                     );
                   },
                 ),
-
                 SizedBox(
                   height: 80,
                   width: 150,
                   child: Image.asset(product.productImage, fit: BoxFit.contain),
                 ),
-                SizedBox(height: 05),
+                SizedBox(height: 5),
                 Text(
                   "${product.price.toStringAsFixed(1)} AED/KG",
                   style: AppTextStyles.h2.copyWith(
@@ -99,73 +101,47 @@ class _FeaturedProductsWidgetState extends State<FeaturedProductsWidget> {
                   ),
                   child:
                       isInCart
-                          ? Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    if (cartQuantities[index]! > 1) {
-                                      cartQuantities[index] =
-                                          cartQuantities[index]! - 1;
-                                    } else {
-                                      cartQuantities.remove(index);
-                                    }
-                                  });
-                                },
-
-                                child: Icon(
-                                  Icons.remove,
-                                  size: 18,
-                                  color: AppColors.primaryColor,
-                                ),
+                          ? Center(
+                            child: Text(
+                              "In Cart",
+                              style: AppTextStyles.h1.copyWith(
+                                fontSize: 14,
+                                color: AppColors.primaryColor,
+                                fontWeight: FontWeight.w600,
                               ),
-
-                              Text(
-                                quantity.toString(),
-                                style: AppTextStyles.h1,
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    cartQuantities[index] = quantity + 1;
-                                  });
-                                },
-
-                                child: Icon(
-                                  Icons.add,
-                                  size: 18,
-                                  color: AppColors.primaryColor,
-                                ),
-                              ),
-                            ],
-                          )
-                          : GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                cartQuantities[index] = 1;
-                              });
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  height: 20,
-                                  width: 20,
-                                  child: Image.asset(
-                                    AppAssets.cartIcon,
-                                    color: AppColors.primaryColor,
-                                  ),
-                                ),
-                                const SizedBox(width: 8),
-                                Text(
-                                  "Add to Cart",
-                                  style: AppTextStyles.h1.copyWith(
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ],
                             ),
+                          )
+                          : Consumer<CartController>(
+                            builder: (context, cartController, child) {
+                              return GestureDetector(
+                                onTap: () {
+                                  cartController.addProductToCart(product);
+                                  setState(() {
+                                    cartQuantities[index] = 1;
+                                  });
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height: 20,
+                                      width: 20,
+                                      child: Image.asset(
+                                        AppAssets.cartIcon,
+                                        color: AppColors.primaryColor,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 8),
+                                    Text(
+                                      "Add to Cart",
+                                      style: AppTextStyles.h1.copyWith(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
                           ),
                 ),
               ],

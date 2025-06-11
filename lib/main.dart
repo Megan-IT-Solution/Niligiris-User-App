@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nilgiris/controllers/cart_controller.dart';
 import 'package:nilgiris/controllers/switch_controller.dart';
 import 'package:nilgiris/controllers/visibility_controller.dart';
 import 'package:nilgiris/screens/splash/splash_screen.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => VisibilityController()),
         ChangeNotifierProvider(create: (_) => SwitchController()),
+        ChangeNotifierProvider(create: (_) => CartController()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

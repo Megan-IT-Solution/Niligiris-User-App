@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nilgiris/constants/app_text_styles.dart';
+import 'package:nilgiris/controllers/cart_controller.dart';
 import 'package:nilgiris/models/product_model.dart';
 import 'package:nilgiris/screens/custom_navbar/home/widgets/pdt_detail_image_portion.dart';
-import 'package:nilgiris/screens/custom_navbar/home/widgets/pdt_detail_quantity_increment_decrement_widget.dart';
 import 'package:nilgiris/screens/custom_navbar/home/widgets/pdt_detail_reviews_widget.dart';
+import 'package:nilgiris/utils/custom_msgs.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constants/app_colors.dart';
 import '../../../widgets/buttons.dart';
@@ -19,6 +21,7 @@ class ProductDetailScreen extends StatefulWidget {
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   int _count = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,34 +91,38 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           color: Color(0xFF868889),
                         ),
                       ),
-                      SizedBox(height: 20),
-                      PdtDetailQuantityIncrementDecrementWidget(
-                        quantity: _count,
-                        onMinusClicked: () {
-                          if (_count <= 1) {
-                            setState(() {
-                              _count = 1;
-                            });
-                          } else {
-                            setState(() {
-                              _count--;
-                            });
-                          }
-                        },
-                        onAddClicked: () {
-                          setState(() {
-                            _count++;
-                          });
-                        },
-                      ),
-                      SizedBox(height: 20),
-                      PrimaryButton(onPressed: () {}, title: "Add To Cart"),
                     ],
                   ),
                 ),
               ),
             ),
           ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 15),
+        child: Consumer<CartController>(
+          builder: (context, cartController, child) {
+            final bool isInCart = cartController.cartList.any(
+              (item) => item.productId == widget.productModel.productId,
+            );
+
+            return PrimaryButton(
+              title: isInCart ? "In Cart" : "Add To Cart",
+              onPressed:
+                  isInCart
+                      ? () {
+                        showCustomMsg(
+                          context,
+                          "This Product is already in cart",
+                        );
+                      }
+                      : () {
+                        widget.productModel.quantity = _count;
+                        cartController.addProductToCart(widget.productModel);
+                      },
+            );
+          },
         ),
       ),
     );

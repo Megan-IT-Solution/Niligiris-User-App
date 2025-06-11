@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:nilgiris/constants/app_assets.dart';
 import 'package:nilgiris/controllers/cart_controller.dart';
-import 'package:nilgiris/screens/custom_navbar/custom_navbar_screen.dart';
+import 'package:nilgiris/screens/custom_navbar/cart/widgets/empty_cart_widget.dart';
+import 'package:nilgiris/screens/custom_navbar/cart/widgets/increment_decrement_quantity_widget.dart';
+import 'package:nilgiris/screens/custom_navbar/cart/widgets/pdt_quantity_and_title_widget.dart';
 import 'package:nilgiris/widgets/buttons.dart';
 import 'package:provider/provider.dart';
 
@@ -25,39 +25,7 @@ class CartScreen extends StatelessWidget {
       ),
       body:
           cartController.cartList.isEmpty
-              ? Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: 120,
-                        width: 150,
-                        child: Image.asset(
-                          AppAssets.cartIcon,
-                          color: AppColors.primaryColor,
-                        ),
-                      ),
-                      SizedBox(height: 30),
-                      Text(
-                        "Your Cart Is Empty!",
-                        style: AppTextStyles.h2.copyWith(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22,
-                        ),
-                      ),
-                      SizedBox(height: 40),
-                      PrimaryButton(
-                        onPressed: () {
-                          Get.offAll(CustomNavbarScreen());
-                        },
-                        title: "Start Shopping",
-                      ),
-                    ],
-                  ),
-                ),
-              )
+              ? EmptyCartWidget()
               : Column(
                 children: [
                   Expanded(
@@ -79,61 +47,24 @@ class CartScreen extends StatelessWidget {
                             children: [
                               Image.asset(
                                 product.productImage,
-                                height: 60,
-                                width: 60,
+                                height: 70,
+                                width: 70,
                                 fit: BoxFit.contain,
                               ),
                               SizedBox(width: 12),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      product.productTitle,
-                                      style: AppTextStyles.h2.copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                    SizedBox(height: 6),
-                                    Text(
-                                      "${product.price.toStringAsFixed(2)} AED",
-                                      style: AppTextStyles.h2.copyWith(
-                                        color: AppColors.primaryColor,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Row(
-                                children: [
-                                  IconButton(
-                                    icon: Icon(
-                                      Icons.remove_circle_outline,
-                                      color: AppColors.primaryColor,
-                                    ),
-                                    onPressed: () {
-                                      cartController.decrementQuantity(
-                                        product.productId,
-                                      );
-                                    },
-                                  ),
-                                  Text(
-                                    product.quantity.toString(),
-                                    style: AppTextStyles.h2,
-                                  ),
-                                  IconButton(
-                                    icon: Icon(
-                                      Icons.add_circle_outline,
-                                      color: AppColors.primaryColor,
-                                    ),
-                                    onPressed: () {
-                                      cartController.incrementQuantity(
-                                        product.productId,
-                                      );
-                                    },
-                                  ),
-                                ],
+                              PdtQuantityAndTitleWidget(product: product),
+                              IncrementDecrementQuantityWidget(
+                                quantity: product.quantity.toString(),
+                                onDecrementClicked: () {
+                                  cartController.decrementQuantity(
+                                    product.productId,
+                                  );
+                                },
+                                onIncrementClicked: () {
+                                  cartController.incrementQuantity(
+                                    product.productId,
+                                  );
+                                },
                               ),
                             ],
                           ),
@@ -174,7 +105,6 @@ class CartScreen extends StatelessWidget {
                         SizedBox(height: 16),
                         PrimaryButton(
                           onPressed: () {
-                            // Implement checkout navigation
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text("Proceeding to checkout..."),

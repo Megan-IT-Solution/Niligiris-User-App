@@ -4,6 +4,7 @@ import 'package:nilgiris/constants/app_colors.dart';
 import 'package:nilgiris/screens/custom_navbar/profile/about_me/about_me_screen.dart';
 import 'package:nilgiris/screens/custom_navbar/profile/my_address/my_address_screen.dart';
 import 'package:nilgiris/screens/custom_navbar/profile/my_orders/my_orders_screen.dart';
+import 'package:nilgiris/screens/custom_navbar/profile/notifications/notification_settings_screen.dart';
 import 'package:nilgiris/screens/custom_navbar/profile/widgets/profile_header_widget.dart';
 import 'package:nilgiris/screens/custom_navbar/profile/widgets/profile_tile_widget.dart';
 
@@ -40,7 +41,13 @@ class ProfileScreen extends StatelessWidget {
             icon: "address",
             title: "My Address",
           ),
-          ProfileTileWidget(icon: "notification", title: "Notifications"),
+          ProfileTileWidget(
+            onPressed: () {
+              Get.to(NotificationSettingsScreen());
+            },
+            icon: "notification",
+            title: "Notifications",
+          ),
           ProfileTileWidget(icon: "logout", title: "Sign Out"),
         ],
       ),

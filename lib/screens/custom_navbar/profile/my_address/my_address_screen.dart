@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nilgiris/screens/custom_navbar/profile/my_address/add_address_screen.dart';
 import 'package:nilgiris/screens/custom_navbar/profile/my_address/widgets/address_card_widget.dart';
 
 import '../../../../constants/app_colors.dart';
@@ -16,7 +18,12 @@ class MyAddressScreen extends StatelessWidget {
         title: Text("My Address", style: AppTextStyles.h2),
         centerTitle: true,
         actions: [
-          Icon(Icons.add_circle_outline, size: 25),
+          GestureDetector(
+            onTap: () {
+              Get.to(AddAddressScreen());
+            },
+            child: Icon(Icons.add_circle_outline, size: 25),
+          ),
           SizedBox(width: 20),
         ],
       ),

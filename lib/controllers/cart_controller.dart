@@ -54,4 +54,9 @@ class CartController extends ChangeNotifier {
     }
     return total;
   }
+
+  void removeProduct(String productId) {
+    _cartList.removeWhere((item) => item.productId == productId);
+    notifyListeners();
+  }
 }

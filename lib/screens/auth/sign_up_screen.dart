@@ -8,8 +8,8 @@ import '../../constants/app_assets.dart';
 import '../../constants/app_colors.dart';
 import '../../constants/app_text_styles.dart';
 import '../../controllers/visibility_controller.dart';
+import '../../widgets/buttons.dart';
 import '../../widgets/text_inputs.dart';
-import '../onboarding/onboarding_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});

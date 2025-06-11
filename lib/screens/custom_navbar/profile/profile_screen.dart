@@ -7,6 +7,7 @@ import 'package:nilgiris/screens/custom_navbar/profile/my_orders/my_orders_scree
 import 'package:nilgiris/screens/custom_navbar/profile/notifications/notification_settings_screen.dart';
 import 'package:nilgiris/screens/custom_navbar/profile/widgets/profile_header_widget.dart';
 import 'package:nilgiris/screens/custom_navbar/profile/widgets/profile_tile_widget.dart';
+import 'package:nilgiris/utils/dialogs.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -48,7 +49,11 @@ class ProfileScreen extends StatelessWidget {
             icon: "notification",
             title: "Notifications",
           ),
-          ProfileTileWidget(icon: "logout", title: "Sign Out"),
+          ProfileTileWidget(
+            onPressed: () => showSignOutDialog(context),
+            icon: "logout",
+            title: "Sign Out",
+          ),
         ],
       ),
     );

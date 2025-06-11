@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nilgiris/controllers/switch_controller.dart';
-import 'package:nilgiris/screens/onboarding/onboarding_screen.dart';
 import 'package:nilgiris/widgets/text_inputs.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../constants/app_colors.dart';
 import '../../../../constants/app_text_styles.dart';
+import '../../../../widgets/buttons.dart';
 
 class AddAddressScreen extends StatelessWidget {
   const AddAddressScreen({super.key});

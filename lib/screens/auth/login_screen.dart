@@ -7,11 +7,11 @@ import 'package:nilgiris/screens/auth/forgot_password_screen.dart';
 import 'package:nilgiris/screens/auth/sign_up_screen.dart';
 import 'package:nilgiris/screens/auth/widgets/auth_footer.dart';
 import 'package:nilgiris/screens/auth/widgets/remember_me_and_forgot_pass_portion.dart';
-import 'package:nilgiris/screens/onboarding/onboarding_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/app_colors.dart';
 import '../../constants/app_text_styles.dart';
+import '../../widgets/buttons.dart';
 import '../../widgets/text_inputs.dart';
 import '../custom_navbar/custom_navbar_screen.dart';
 

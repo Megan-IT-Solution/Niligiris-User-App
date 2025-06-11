@@ -5,9 +5,9 @@ import 'package:nilgiris/models/product_model.dart';
 import 'package:nilgiris/screens/custom_navbar/home/widgets/pdt_detail_image_portion.dart';
 import 'package:nilgiris/screens/custom_navbar/home/widgets/pdt_detail_quantity_increment_decrement_widget.dart';
 import 'package:nilgiris/screens/custom_navbar/home/widgets/pdt_detail_reviews_widget.dart';
-import 'package:nilgiris/screens/onboarding/onboarding_screen.dart';
 
 import '../../../constants/app_colors.dart';
+import '../../../widgets/buttons.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final ProductModel productModel;

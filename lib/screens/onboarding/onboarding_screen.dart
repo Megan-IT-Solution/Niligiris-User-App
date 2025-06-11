@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:nilgiris/constants/app_colors.dart';
 import 'package:nilgiris/constants/app_text_styles.dart';
 import 'package:nilgiris/screens/first_screen/first_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../utils/lists.dart';
+import '../../widgets/buttons.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -98,45 +98,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class PrimaryButton extends StatelessWidget {
-  final String title;
-  final Function()? onPressed;
-  final Color? btnColor, titleColor;
-
-  const PrimaryButton({
-    super.key,
-    required this.title,
-    this.onPressed,
-    this.btnColor,
-    this.titleColor,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        height: 50,
-        width: Get.width,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: btnColor ?? AppColors.primaryColor,
-        ),
-        child: Center(
-          child: Text(
-            title,
-            style: GoogleFonts.poppins(
-              fontSize: 15,
-              color: titleColor ?? AppColors.primaryWhite,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ),
       ),
     );
   }

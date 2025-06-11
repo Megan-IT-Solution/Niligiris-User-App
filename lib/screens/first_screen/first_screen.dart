@@ -5,7 +5,8 @@ import 'package:nilgiris/constants/app_colors.dart';
 import 'package:nilgiris/constants/app_text_styles.dart';
 import 'package:nilgiris/screens/auth/login_screen.dart';
 import 'package:nilgiris/screens/auth/sign_up_screen.dart';
-import 'package:nilgiris/screens/onboarding/onboarding_screen.dart';
+
+import '../../widgets/buttons.dart';
 
 class FirstScreen extends StatelessWidget {
   const FirstScreen({super.key});

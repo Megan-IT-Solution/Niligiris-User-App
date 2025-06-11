@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nilgiris/constants/app_colors.dart';
 import 'package:nilgiris/constants/app_text_styles.dart';
-import 'package:nilgiris/screens/onboarding/onboarding_screen.dart';
 import 'package:nilgiris/widgets/text_inputs.dart';
+
+import '../../../../widgets/buttons.dart';
 
 class AboutMeScreen extends StatelessWidget {
   const AboutMeScreen({super.key});

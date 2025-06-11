@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nilgiris/constants/app_colors.dart';
+import 'package:nilgiris/screens/custom_navbar/profile/about_me/about_me_screen.dart';
 import 'package:nilgiris/screens/custom_navbar/profile/widgets/profile_header_widget.dart';
 import 'package:nilgiris/screens/custom_navbar/profile/widgets/profile_tile_widget.dart';
 
@@ -16,7 +18,13 @@ class ProfileScreen extends StatelessWidget {
           children: [
             ProfileHeaderWidget(),
             SizedBox(height: 40),
-            ProfileTileWidget(icon: "about", title: "About Me"),
+            ProfileTileWidget(
+              onPressed: () {
+                Get.to(AboutMeScreen());
+              },
+              icon: "about",
+              title: "About Me",
+            ),
             ProfileTileWidget(icon: "orders", title: "My Orders"),
             ProfileTileWidget(icon: "favorite", title: "My Favorites"),
             ProfileTileWidget(icon: "address", title: "My Address"),

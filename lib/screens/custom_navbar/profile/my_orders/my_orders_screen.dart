@@ -12,7 +12,6 @@ class MyOrdersScreen extends StatefulWidget {
 }
 
 class _MyOrdersScreenState extends State<MyOrdersScreen> {
-  bool _showOrderDetails = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

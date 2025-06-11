@@ -16,7 +16,10 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
-      decoration: BoxDecoration(color: AppColors.primaryWhite),
+      decoration: BoxDecoration(
+        color: AppColors.primaryWhite,
+        borderRadius: BorderRadius.circular(6),
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         child: Column(

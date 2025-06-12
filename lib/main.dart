@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:nilgiris/controllers/cart_controller.dart';
 import 'package:nilgiris/controllers/switch_controller.dart';
 import 'package:nilgiris/controllers/visibility_controller.dart';
+import 'package:nilgiris/controllers/wishlist_controller.dart';
 import 'package:nilgiris/screens/splash/splash_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => VisibilityController()),
         ChangeNotifierProvider(create: (_) => SwitchController()),
         ChangeNotifierProvider(create: (_) => CartController()),
+        ChangeNotifierProvider(create: (_) => WishlistController()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

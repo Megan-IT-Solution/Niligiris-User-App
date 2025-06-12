@@ -6,6 +6,7 @@ import '../../../../constants/app_assets.dart';
 import '../../../../constants/app_colors.dart';
 import '../../../../constants/app_text_styles.dart';
 import '../../../../controllers/cart_controller.dart';
+import '../../../../controllers/wishlist_controller.dart';
 import '../../../../utils/lists.dart';
 import '../product_detail_screen.dart';
 
@@ -51,9 +52,26 @@ class FeaturedProductsWidget extends StatelessWidget {
                           horizontal: 8,
                           vertical: 2,
                         ),
-                        child: Icon(
-                          Icons.favorite_border,
-                          color: AppColors.lightGrey,
+                        child: Consumer<WishlistController>(
+                          builder: (context, wishlistController, child) {
+                            final isFavorite = wishlistController.isInWishlist(
+                              product,
+                            );
+                            return GestureDetector(
+                              onTap: () {
+                                wishlistController.toggleWishlist(product);
+                              },
+                              child: Icon(
+                                isFavorite
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color:
+                                    isFavorite
+                                        ? Colors.red
+                                        : AppColors.lightGrey,
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ),

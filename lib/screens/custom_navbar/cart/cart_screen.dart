@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nilgiris/controllers/cart_controller.dart';
 import 'package:nilgiris/screens/custom_navbar/cart/widgets/checkout_widget.dart';
 import 'package:nilgiris/screens/custom_navbar/cart/widgets/dismissible_widget.dart';
 import 'package:nilgiris/screens/custom_navbar/cart/widgets/empty_cart_widget.dart';
 import 'package:nilgiris/screens/custom_navbar/cart/widgets/increment_decrement_quantity_widget.dart';
 import 'package:nilgiris/screens/custom_navbar/cart/widgets/pdt_quantity_and_title_widget.dart';
-import 'package:nilgiris/utils/custom_msgs.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constants/app_colors.dart';
 import '../../../constants/app_text_styles.dart';
+import 'checkout_screen.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -87,7 +88,7 @@ class CartScreen extends StatelessWidget {
                         .getTotalAmount()
                         .toStringAsFixed(2),
                     onCheckOutClicked: () {
-                      showCustomMsg(context, "Check Out Clicked");
+                      Get.to(() => CheckoutScreen());
                     },
                   ),
                 ],

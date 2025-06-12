@@ -7,6 +7,7 @@ import 'package:nilgiris/screens/custom_navbar/profile/my_orders/my_orders_scree
 import 'package:nilgiris/screens/custom_navbar/profile/notifications/notification_settings_screen.dart';
 import 'package:nilgiris/screens/custom_navbar/profile/widgets/profile_header_widget.dart';
 import 'package:nilgiris/screens/custom_navbar/profile/widgets/profile_tile_widget.dart';
+import 'package:nilgiris/screens/custom_navbar/wishlist/wishlist_screen.dart';
 import 'package:nilgiris/utils/dialogs.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -34,7 +35,13 @@ class ProfileScreen extends StatelessWidget {
             icon: "orders",
             title: "My Orders",
           ),
-          ProfileTileWidget(icon: "favorite", title: "My Favorites"),
+          ProfileTileWidget(
+            onPressed: () {
+              Get.to(WishlistScreen());
+            },
+            icon: "favorite",
+            title: "My Favorites",
+          ),
           ProfileTileWidget(
             onPressed: () {
               Get.to(MyAddressScreen());

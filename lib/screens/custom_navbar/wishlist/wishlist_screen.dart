@@ -29,20 +29,31 @@ class WishlistScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   ProductModel product = wishlistController.wishlist[index];
                   return Card(
+                    margin: EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+                    color: AppColors.primaryWhite,
+                    elevation: 0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: ListTile(
                       leading: Image.asset(
                         product.productImage,
-                        height: 50,
-                        width: 50,
+                        height: 60,
+                        width: 60,
                       ),
                       title: Text(
                         product.productTitle,
-                        style: AppTextStyles.h2,
+                        style: AppTextStyles.h2.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                      subtitle: Text("${product.price} AED/KG"),
+                      subtitle: Text(
+                        "${product.price} AED/KG",
+                        style: AppTextStyles.h1.copyWith(
+                          color: AppColors.primaryColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       trailing: IconButton(
                         icon: Icon(Icons.favorite, color: Colors.red),
                         onPressed: () {

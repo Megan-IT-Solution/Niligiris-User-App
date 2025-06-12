@@ -62,7 +62,6 @@ void creditCardWidget(BuildContext context) {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: Text("Pay Now"),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primaryColor,
                         padding: EdgeInsets.symmetric(
@@ -70,6 +69,7 @@ void creditCardWidget(BuildContext context) {
                           vertical: 15,
                         ),
                       ),
+                      child: Text("Pay Now"),
                     ),
                   ],
                 ),

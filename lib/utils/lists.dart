@@ -150,3 +150,9 @@ List<ProductModel> productList = [
     price: 9.0,
   ),
 ];
+
+final paymentMethods = [
+  {'title': 'RAK Bank', 'image': 'assets/icons/rak.png'},
+  {'title': 'Stripe', 'image': 'assets/icons/stripe.png'},
+  {'title': 'Cash On Delivery', 'image': null},
+];

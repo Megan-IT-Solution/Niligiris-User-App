@@ -4,8 +4,13 @@ import 'package:nilgiris/constants/app_colors.dart';
 import 'package:nilgiris/constants/app_text_styles.dart';
 import 'package:nilgiris/controllers/cart_controller.dart';
 import 'package:nilgiris/screens/custom_navbar/cart/widgets/credit_card_widget.dart';
+import 'package:nilgiris/screens/custom_navbar/cart/widgets/delivery_address_widget.dart';
+import 'package:nilgiris/screens/custom_navbar/cart/widgets/order_summary_row_widget.dart';
+import 'package:nilgiris/screens/custom_navbar/cart/widgets/payment_method_selection_widget.dart';
 import 'package:nilgiris/widgets/buttons.dart';
 import 'package:provider/provider.dart';
+
+import '../../../utils/lists.dart';
 
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});
@@ -16,12 +21,6 @@ class CheckoutScreen extends StatefulWidget {
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
   String _selectedPaymentMethod = 'RAK Bank';
-
-  final paymentMethods = [
-    {'title': 'RAK Bank', 'image': 'assets/icons/rak.png'},
-    {'title': 'Stripe', 'image': 'assets/icons/stripe.png'},
-    {'title': 'Cash On Delivery', 'image': null},
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -39,22 +38,18 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Delivery Address", style: AppTextStyles.h1),
-            SizedBox(height: 8),
-            Container(
-              padding: EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: AppColors.primaryWhite,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Text(
-                "John Doe\nStreet 123, Dubai\n+971 50 123 4567",
-                style: AppTextStyles.h2,
-              ),
+            Text(
+              "Delivery Address",
+              style: AppTextStyles.h2.copyWith(fontWeight: FontWeight.bold),
             ),
+            SizedBox(height: 8),
+            DeliveryAddressWidget(),
 
             SizedBox(height: 20),
-            Text("Payment Method", style: AppTextStyles.h1),
+            Text(
+              "Payment Methods",
+              style: AppTextStyles.h2.copyWith(fontWeight: FontWeight.bold),
+            ),
             SizedBox(height: 12),
 
             SingleChildScrollView(
@@ -70,53 +65,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             _selectedPaymentMethod = method['title']!;
                           });
                         },
-                        child: Container(
-                          margin: EdgeInsets.only(right: 12),
-                          padding: EdgeInsets.all(12),
-                          width: 110,
-                          height: 90,
-                          decoration: BoxDecoration(
-                            color:
-                                isSelected
-                                    ? AppColors.primaryColor.withOpacity(0.1)
-                                    : AppColors.primaryWhite,
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                              color:
-                                  isSelected
-                                      ? AppColors.primaryColor
-                                      : Colors.grey.shade300,
-                              width: 1.5,
-                            ),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              method['image'] != null
-                                  ? Image.asset(
-                                    method['image']!,
-                                    height: 30,
-                                    fit: BoxFit.contain,
-                                  )
-                                  : Icon(Icons.money, size: 30),
-                              SizedBox(height: 8),
-                              Text(
-                                method['title']!,
-                                style: AppTextStyles.h2.copyWith(
-                                  fontSize: 13,
-                                  fontWeight:
-                                      isSelected
-                                          ? FontWeight.bold
-                                          : FontWeight.normal,
-                                  color:
-                                      isSelected
-                                          ? AppColors.primaryColor
-                                          : Colors.black87,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
+                        child: PaymentMethodSelectionWidget(
+                          method: method,
+                          isSelected: isSelected,
                         ),
                       );
                     }).toList(),
@@ -124,7 +75,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             ),
 
             SizedBox(height: 20),
-            Text("Order Summary", style: AppTextStyles.h1),
+            Text(
+              "Order Summary",
+              style: AppTextStyles.h2.copyWith(fontWeight: FontWeight.bold),
+            ),
             SizedBox(height: 8),
             Container(
               padding: EdgeInsets.all(12),
@@ -134,14 +88,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               ),
               child: Column(
                 children: [
-                  _summaryRow(
+                  orderSummaryWidget(
                     "Subtotal",
                     "${cartController.getTotalAmount().toStringAsFixed(2)} AED",
                   ),
                   SizedBox(height: 6),
-                  _summaryRow("Delivery", "5.00 AED"),
+                  orderSummaryWidget("Delivery", "5.00 AED"),
                   Divider(height: 20),
-                  _summaryRow(
+                  orderSummaryWidget(
                     "Total",
                     "${(cartController.getTotalAmount() + 5).toStringAsFixed(2)} AED",
                     isBold: true,
@@ -175,14 +129,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           ],
         ),
       ),
-    );
-  }
-
-  Widget _summaryRow(String label, String value, {bool isBold = false}) {
-    final textStyle = isBold ? AppTextStyles.h1 : AppTextStyles.h2;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [Text(label, style: textStyle), Text(value, style: textStyle)],
     );
   }
 }

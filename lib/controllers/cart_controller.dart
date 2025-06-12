@@ -59,4 +59,9 @@ class CartController extends ChangeNotifier {
     _cartList.removeWhere((item) => item.productId == productId);
     notifyListeners();
   }
+
+  void clearCart() {
+    _cartList.clear();
+    notifyListeners();
+  }
 }

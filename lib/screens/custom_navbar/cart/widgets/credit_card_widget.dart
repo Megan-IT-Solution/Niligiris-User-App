@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
+import 'package:get/get.dart';
 import 'package:nilgiris/constants/app_colors.dart';
+import 'package:nilgiris/widgets/buttons.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../controllers/cart_controller.dart';
 
 void creditCardWidget(BuildContext context) {
+  bool isProcessing = false;
+
   String cardNumber = '';
   String expiryDate = '';
   String cardHolderName = '';
@@ -51,25 +58,92 @@ void creditCardWidget(BuildContext context) {
                           isCvvFocused = model.isCvvFocused;
                         });
                       },
-
                       formKey: GlobalKey<FormState>(),
                       cvvValidationMessage: 'Please input a valid CVV',
                       dateValidationMessage: 'Please input a valid date',
                       numberValidationMessage: 'Please input a valid number',
                     ),
                     SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pop(context);
+
+                    Consumer<CartController>(
+                      builder: (context, cartController, child) {
+                        return isProcessing
+                            ? PrimaryButton(title: "Please Wait......")
+                            : PrimaryButton(
+                              title: "Pay Now",
+                              onPressed: () async {
+                                setState(() => isProcessing = true);
+
+                                await Future.delayed(Duration(seconds: 3));
+
+                                cartController.clearCart();
+                                Get.back();
+
+                                await Future.delayed(
+                                  Duration(milliseconds: 300),
+                                );
+
+                                Get.defaultDialog(
+                                  title: "",
+                                  contentPadding: EdgeInsets.all(20),
+                                  content: Column(
+                                    children: [
+                                      Icon(
+                                        Icons.check_circle,
+                                        color: AppColors.primaryColor,
+                                        size: 60,
+                                      ),
+                                      SizedBox(height: 12),
+                                      Text(
+                                        "Order Placed!",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: AppColors.primaryColor,
+                                        ),
+                                      ),
+                                      SizedBox(height: 8),
+                                      Text(
+                                        "Thank you for shopping with us. Your order has been successfully placed.",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(fontSize: 14),
+                                      ),
+                                      SizedBox(height: 20),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          Get.back();
+                                          Get.back();
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor:
+                                              AppColors.primaryColor,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                              8,
+                                            ),
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 24,
+                                            vertical: 12,
+                                          ),
+                                          child: Text(
+                                            "Back to Home",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+
+                                setState(() => isProcessing = false);
+                              },
+                            );
                       },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primaryColor,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 50,
-                          vertical: 15,
-                        ),
-                      ),
-                      child: Text("Pay Now"),
                     ),
                   ],
                 ),
